@@ -1,0 +1,29 @@
+{
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true,
+        "source.sortImports": true,
+        "source.fixAll": true,
+    },
+    "[dart]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "editor.rulers": [
+            120
+        ],
+        "editor.selectionHighlight": false,
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+        "editor.suggestSelection": "first",
+        "editor.tabCompletion": "onlySnippets",
+        "editor.wordBasedSuggestions": false,
+        "editor.suggest.showConstants": true
+    },
+    "dart.lineLength": 120,
+    "editor.wordWrapColumn": 120,
+    "explorer.confirmDelete": false,
+    "git.confirmSync": false,
+    "explorer.confirmDragAndDrop": false,
+    "git.enableSmartCommit": true,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "editor.inlineSuggest.enabled": true,
+  
+}

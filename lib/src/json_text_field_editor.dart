@@ -68,9 +68,25 @@ class JsonTextField extends ExtendedTextField {
       super.selectionWidthStyle,
       super.strutStyle,
       super.undoController,
+      this.keyHighlightStyle,
+      this.stringHighlightStyle,
+      this.numberHighlightStyle,
+      this.boolHighlightStyle,
+      this.nullHighlightStyle,
+      this.specialCharHighlightStyle,
+      this.errorTextStyle,
+      this.errorContainerDecoration,
       required this.isFormating});
 
   final bool isFormating;
+  final TextStyle? keyHighlightStyle;
+  final TextStyle? stringHighlightStyle;
+  final TextStyle? numberHighlightStyle;
+  final TextStyle? boolHighlightStyle;
+  final TextStyle? nullHighlightStyle;
+  final TextStyle? specialCharHighlightStyle;
+  final TextStyle? errorTextStyle;
+  final BoxDecoration? errorContainerDecoration;
 
   @override
   JsonTextFieldState createState() {
@@ -81,6 +97,18 @@ class JsonTextField extends ExtendedTextField {
 class JsonTextFieldState extends State<JsonTextField> {
   String? jsonError;
   late final TextEditingController controller = widget.controller ?? TextEditingController();
+  late TextStyle style = widget.style ?? const TextStyle();
+  late final TextStyle keyHighlightStyle = widget.keyHighlightStyle ??
+      style.copyWith(fontWeight: FontWeight.bold, color: const Color.fromARGB(255, 68, 143, 255));
+  late final TextStyle stringHighlightStyle = widget.stringHighlightStyle ?? style.copyWith(color: Colors.green[900]);
+  late final TextStyle numberHighlightStyle = widget.numberHighlightStyle ?? style.copyWith(color: Colors.purple[900]);
+  late final TextStyle boolHighlightStyle =
+      widget.boolHighlightStyle ?? style.copyWith(color: Colors.purple[900], fontWeight: FontWeight.bold);
+  late final TextStyle nullHighlightStyle =
+      widget.nullHighlightStyle ?? style.copyWith(color: Colors.grey[600], fontWeight: FontWeight.bold);
+  late final TextStyle specialCharHighlightStyle =
+      widget.specialCharHighlightStyle ?? style.copyWith(color: Colors.grey[700]);
+  late final TextStyle errorTextStyle = widget.errorTextStyle ?? style.copyWith(color: Colors.red);
 
   void _setJsonError(String? error) => setState(() => jsonError = error);
   @override
@@ -135,7 +163,17 @@ class JsonTextFieldState extends State<JsonTextField> {
             showCursor: widget.showCursor,
             smartDashesType: widget.smartDashesType,
             smartQuotesType: widget.smartQuotesType,
-            specialTextSpanBuilder: widget.isFormating ? JsonHighlight() : null,
+            specialTextSpanBuilder: widget.isFormating
+                ? JsonHighlight(
+                    boolHighlightStyle: boolHighlightStyle,
+                    keyHighlightStyle: keyHighlightStyle,
+                    nullHighlightStyle: nullHighlightStyle,
+                    numberHighlightStyle: numberHighlightStyle,
+                    specialCharHighlightStyle: stringHighlightStyle,
+                    stringHighlightStyle: stringHighlightStyle,
+                    commonTextStyle: style,
+                  )
+                : null,
             style: widget.style,
             textAlign: widget.textAlign,
             textAlignVertical: widget.textAlignVertical,
@@ -159,7 +197,13 @@ class JsonTextFieldState extends State<JsonTextField> {
             strutStyle: widget.strutStyle,
             undoController: widget.undoController,
           ),
-          ErrorMessageContainer(jsonError: jsonError),
+          ErrorMessageContainer(
+              jsonError: jsonError,
+              errorTextStyle: errorTextStyle,
+              decoration: widget.errorContainerDecoration ??
+                  const BoxDecoration(
+                      color: Colors.amber,
+                      borderRadius: BorderRadius.only(topLeft: Radius.circular(8), topRight: Radius.circular(8)))),
         ],
       ),
     );

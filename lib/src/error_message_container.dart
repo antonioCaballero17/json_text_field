@@ -4,9 +4,13 @@ class ErrorMessageContainer extends StatelessWidget {
   const ErrorMessageContainer({
     super.key,
     required this.jsonError,
+    required this.errorTextStyle,
+    this.decoration,
   });
 
   final String? jsonError;
+  final TextStyle errorTextStyle;
+  final BoxDecoration? decoration;
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +22,7 @@ class ErrorMessageContainer extends StatelessWidget {
               width: double.infinity,
               padding: const EdgeInsets.all(8),
               constraints: const BoxConstraints(minHeight: 40, maxHeight: 60),
-              decoration: BoxDecoration(
-                color: Colors.amber.withOpacity(0.5),
-                borderRadius: BorderRadius.circular(8),
-              ),
+              decoration: decoration,
               child: Center(child: Text(jsonError ?? '', style: const TextStyle(color: Colors.red))),
             ),
     );

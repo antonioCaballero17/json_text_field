@@ -101,7 +101,7 @@ class JsonTextFieldState extends State<JsonTextField> {
             buildCounter: widget.buildCounter,
             canRequestFocus: widget.canRequestFocus,
             clipBehavior: widget.clipBehavior,
-            controller: widget.controller,
+            controller: controller,
             cursorColor: widget.cursorColor,
             cursorHeight: widget.cursorHeight,
             cursorRadius: widget.cursorRadius,

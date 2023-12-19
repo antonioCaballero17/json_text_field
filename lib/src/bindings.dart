@@ -10,23 +10,23 @@ class Bindings {
       required bool isFormateable}) {
     return <ShortcutActivator, VoidCallback>{
       const SingleActivator(LogicalKeyboardKey.tab): () => handleTab(controller: controller),
-      const SingleActivator(LogicalKeyboardKey.enter, control: true, alt: true): () => handleEnter(
-          orderJson: true, controller: controller, onFormatJson: onFormatJson, isFormateable: isFormateable),
+      const SingleActivator(LogicalKeyboardKey.enter, control: true, alt: true): () =>
+          handleEnter(sortJson: true, controller: controller, onFormatJson: onFormatJson, isFormateable: isFormateable),
       const SingleActivator(LogicalKeyboardKey.enter, control: true): () => handleEnter(
-          orderJson: false, controller: controller, onFormatJson: onFormatJson, isFormateable: isFormateable),
+          sortJson: false, controller: controller, onFormatJson: onFormatJson, isFormateable: isFormateable),
     };
   }
 
   static void handleTab({required TextEditingController controller}) => controller.insert("  ");
 
   static void handleEnter(
-      {required bool orderJson,
+      {required bool sortJson,
       required TextEditingController controller,
       required Function(String?) onFormatJson,
       required bool isFormateable}) {
     controller.insert("\n");
     if (isFormateable && JsonUtils.isValidJson(controller.text)) {
-      JsonUtils.formatTextFieldJson(orderJson: orderJson, controller: controller);
+      JsonUtils.formatTextFieldJson(sortJson: sortJson, controller: controller);
       onFormatJson(null);
     }
   }

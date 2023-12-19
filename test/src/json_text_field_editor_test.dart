@@ -38,7 +38,7 @@ void main() {
         selection: TextSelection.collapsed(
           offset: 0,
         ));
-    controller.formatJson(orderJson: false);
+    controller.formatJson(sortJson: false);
     await tester.pumpWidget(MaterialApp(
       home: Scaffold(
         body: SizedBox(

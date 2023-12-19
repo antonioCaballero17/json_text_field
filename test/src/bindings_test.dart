@@ -23,7 +23,7 @@ void main() {
             offset: 0,
           ));
       Bindings.handleEnter(
-          orderJson: false, controller: controller, onFormatJson: (String? json) {}, isFormateable: false);
+          sortJson: false, controller: controller, onFormatJson: (String? json) {}, isFormateable: false);
       expect(controller.text, equals("\n"));
     });
 
@@ -35,10 +35,10 @@ void main() {
             offset: 0,
           ));
       bool isFormateable = true;
-      bool orderJson = false;
+      bool sortJson = false;
       onFormatJson(String? json) {}
       Bindings.handleEnter(
-        orderJson: orderJson,
+        sortJson: sortJson,
         controller: controller,
         onFormatJson: onFormatJson,
         isFormateable: isFormateable,
@@ -56,10 +56,10 @@ void main() {
             offset: 0,
           ));
       bool isFormateable = true;
-      bool orderJson = false;
+      bool sortJson = false;
       onFormatJson(String? json) {}
       Bindings.handleEnter(
-        orderJson: orderJson,
+        sortJson: sortJson,
         controller: controller,
         onFormatJson: onFormatJson,
         isFormateable: isFormateable,
@@ -77,10 +77,10 @@ void main() {
             offset: 0,
           ));
       bool isFormateable = true;
-      bool orderJson = true;
+      bool sortJson = true;
       onFormatJson(String? json) {}
       Bindings.handleEnter(
-        orderJson: orderJson,
+        sortJson: sortJson,
         controller: controller,
         onFormatJson: onFormatJson,
         isFormateable: isFormateable,

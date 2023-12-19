@@ -55,11 +55,11 @@ class JsonUtils {
     return sortedJsonString;
   }
 
-  static void formatTextFieldJson({required bool orderJson, required TextEditingController controller}) {
+  static void formatTextFieldJson({required bool sortJson, required TextEditingController controller}) {
     final oldText = controller.text;
     final oldSelection = controller.selection;
 
-    controller.text = orderJson
+    controller.text = sortJson
         ? JsonUtils.getPrettyPrintJson(JsonUtils.getSortJsonString(controller.text))
         : JsonUtils.getPrettyPrintJson(controller.text);
 

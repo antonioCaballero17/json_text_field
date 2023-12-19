@@ -76,6 +76,7 @@ class JsonTextField extends ExtendedTextField {
       this.nullHighlightStyle,
       this.specialCharHighlightStyle,
       this.errorTextStyle,
+      this.commonTextStyle,
       this.errorContainerDecoration,
       required this.isFormating});
 
@@ -87,6 +88,7 @@ class JsonTextField extends ExtendedTextField {
   final TextStyle? nullHighlightStyle;
   final TextStyle? specialCharHighlightStyle;
   final TextStyle? errorTextStyle;
+  final TextStyle? commonTextStyle;
   final BoxDecoration? errorContainerDecoration;
   @override
   final JsonTextFieldController? controller;
@@ -112,6 +114,7 @@ class JsonTextFieldState extends State<JsonTextField> {
   late final TextStyle specialCharHighlightStyle =
       widget.specialCharHighlightStyle ?? style.copyWith(color: Colors.grey[700]);
   late final TextStyle errorTextStyle = widget.errorTextStyle ?? style.copyWith(color: Colors.red);
+  late final TextStyle commonTextStyle = widget.commonTextStyle ?? style.copyWith(color: Colors.black);
 
   @override
   void initState() {
@@ -182,7 +185,7 @@ class JsonTextFieldState extends State<JsonTextField> {
                     numberHighlightStyle: numberHighlightStyle,
                     specialCharHighlightStyle: stringHighlightStyle,
                     stringHighlightStyle: stringHighlightStyle,
-                    commonTextStyle: style,
+                    commonTextStyle: commonTextStyle,
                   )
                 : null,
             style: widget.style,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 abstract class HighlightStrategy {
-  final TextStyle textStyle;
+  final TextStyle? textStyle;
 
   HighlightStrategy({required this.textStyle});
 

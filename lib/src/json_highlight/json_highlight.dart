@@ -3,22 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:json_text_field_editor/src/json_highlight/highlight_strategy.dart';
 
 class JsonHighlight extends SpecialTextSpanBuilder {
-  final TextStyle keyHighlightStyle;
-  final TextStyle stringHighlightStyle;
-  final TextStyle numberHighlightStyle;
-  final TextStyle boolHighlightStyle;
-  final TextStyle nullHighlightStyle;
-  final TextStyle specialCharHighlightStyle;
-  final TextStyle commonTextStyle;
+  final TextStyle? keyHighlightStyle;
+  final TextStyle? stringHighlightStyle;
+  final TextStyle? numberHighlightStyle;
+  final TextStyle? boolHighlightStyle;
+  final TextStyle? nullHighlightStyle;
+  final TextStyle? specialCharHighlightStyle;
+  final TextStyle? commonTextStyle;
 
   JsonHighlight(
-      {required this.keyHighlightStyle,
-      required this.stringHighlightStyle,
-      required this.numberHighlightStyle,
-      required this.boolHighlightStyle,
-      required this.nullHighlightStyle,
-      required this.specialCharHighlightStyle,
-      required this.commonTextStyle});
+      {this.keyHighlightStyle,
+      this.stringHighlightStyle,
+      this.numberHighlightStyle,
+      this.boolHighlightStyle,
+      this.nullHighlightStyle,
+      this.specialCharHighlightStyle,
+      this.commonTextStyle});
 
   @override
   TextSpan build(String data, {TextStyle? textStyle, SpecialTextGestureTapCallback? onTap}) {

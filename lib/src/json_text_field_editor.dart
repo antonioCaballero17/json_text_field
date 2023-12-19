@@ -1,5 +1,6 @@
 import 'package:extended_text_field/extended_text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:json_text_field_editor/json_text_field_editor.dart';
 import 'package:json_text_field_editor/src/bindings.dart';
 import 'package:json_text_field_editor/src/error_message_container.dart';
 import 'package:json_text_field_editor/src/json_highlight/json_highlight.dart';
@@ -14,7 +15,7 @@ class JsonTextField extends ExtendedTextField {
       super.buildCounter,
       super.canRequestFocus,
       super.clipBehavior,
-      super.controller,
+      this.controller,
       super.cursorColor,
       super.cursorHeight,
       super.cursorRadius,
@@ -87,6 +88,8 @@ class JsonTextField extends ExtendedTextField {
   final TextStyle? specialCharHighlightStyle;
   final TextStyle? errorTextStyle;
   final BoxDecoration? errorContainerDecoration;
+  @override
+  final JsonTextFieldController? controller;
 
   @override
   JsonTextFieldState createState() {
@@ -95,7 +98,7 @@ class JsonTextField extends ExtendedTextField {
 }
 
 class JsonTextFieldState extends State<JsonTextField> {
-  late final TextEditingController controller = widget.controller ?? TextEditingController();
+  late final JsonTextFieldController controller = widget.controller ?? JsonTextFieldController();
   late String? jsonError = controller.text.isEmpty ? null : JsonUtils.getJsonParsingError(controller.text);
   late TextStyle style = widget.style ?? const TextStyle();
   late final TextStyle keyHighlightStyle = widget.keyHighlightStyle ??

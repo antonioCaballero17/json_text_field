@@ -29,23 +29,6 @@ class JsonUtils {
     }
   }
 
-  static int? getJsonParsingErrorLine(String? jsonString) {
-    if (jsonString == null) {
-      return null;
-    }
-    try {
-      json.decode(jsonString);
-      return null;
-    } on FormatException catch (e) {
-      if (e.message.contains('line ')) {
-        final line = e.message.split('line ')[1];
-        return int.tryParse(line.split(' column')[0]);
-      }
-
-      return 23;
-    }
-  }
-
   static String getPrettyPrintJson(String jsonString) {
     var jsonObject = json.decode(jsonString);
     JsonEncoder encoder = const JsonEncoder.withIndent('  ');

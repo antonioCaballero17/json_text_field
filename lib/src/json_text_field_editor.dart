@@ -230,13 +230,14 @@ class JsonTextFieldState extends State<JsonTextField> {
             strutStyle: widget.strutStyle,
             undoController: widget.undoController,
           ),
-          ErrorMessageContainer(
-              jsonError: jsonError,
-              errorTextStyle: errorTextStyle,
-              decoration: widget.errorContainerDecoration ??
-                  const BoxDecoration(
-                      color: Colors.amber,
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(8), topRight: Radius.circular(8)))),
+          if (widget.isFormating)
+            ErrorMessageContainer(
+                jsonError: jsonError,
+                errorTextStyle: errorTextStyle,
+                decoration: widget.errorContainerDecoration ??
+                    const BoxDecoration(
+                        color: Colors.amber,
+                        borderRadius: BorderRadius.only(topLeft: Radius.circular(8), topRight: Radius.circular(8)))),
         ],
       ),
     );

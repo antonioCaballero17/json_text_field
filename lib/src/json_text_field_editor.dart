@@ -95,8 +95,8 @@ class JsonTextField extends ExtendedTextField {
 }
 
 class JsonTextFieldState extends State<JsonTextField> {
-  String? jsonError;
   late final TextEditingController controller = widget.controller ?? TextEditingController();
+  late String? jsonError = controller.text.isEmpty ? null : JsonUtils.getJsonParsingError(controller.text);
   late TextStyle style = widget.style ?? const TextStyle();
   late final TextStyle keyHighlightStyle = widget.keyHighlightStyle ??
       style.copyWith(fontWeight: FontWeight.bold, color: const Color.fromARGB(255, 68, 143, 255));
@@ -109,6 +109,14 @@ class JsonTextFieldState extends State<JsonTextField> {
   late final TextStyle specialCharHighlightStyle =
       widget.specialCharHighlightStyle ?? style.copyWith(color: Colors.grey[700]);
   late final TextStyle errorTextStyle = widget.errorTextStyle ?? style.copyWith(color: Colors.red);
+
+  @override
+  void initState() {
+    controller.text = (widget.isFormating && JsonUtils.isValidJson(controller.text))
+        ? JsonUtils.getPrettyPrintJson(controller.text)
+        : controller.text;
+    super.initState();
+  }
 
   void _setJsonError(String? error) => setState(() => jsonError = error);
   @override

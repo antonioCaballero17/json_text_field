@@ -80,15 +80,34 @@ class JsonTextField extends ExtendedTextField {
       this.errorContainerDecoration,
       required this.isFormating});
 
+  /// If true, the text will be formatted as json. If false, the text field will behave as a normal text field.
   final bool isFormating;
+
+  /// TextStyle for the json key.
   final TextStyle? keyHighlightStyle;
+
+  /// TextStyle for the json string.
   final TextStyle? stringHighlightStyle;
+
+  /// TextStyle for the json number.
   final TextStyle? numberHighlightStyle;
+
+  /// TextStyle for the json bool.
   final TextStyle? boolHighlightStyle;
+
+  /// TextStyle for the json null.
   final TextStyle? nullHighlightStyle;
+
+  /// TextStyle for the json special character.
   final TextStyle? specialCharHighlightStyle;
+
+  /// TextStyle for the error message.
   final TextStyle? errorTextStyle;
+
+  /// TextStyle for the common text.
   final TextStyle? commonTextStyle;
+
+  /// Decoration for the error message container.
   final BoxDecoration? errorContainerDecoration;
   @override
   final JsonTextFieldController? controller;

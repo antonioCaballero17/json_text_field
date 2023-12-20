@@ -77,6 +77,7 @@ class JsonTextField extends ExtendedTextField {
       this.errorTextStyle,
       this.commonTextStyle,
       this.errorContainerDecoration,
+      this.showErrorMessage = false,
       required this.isFormating});
 
   /// If true, the text will be formatted as json. If false, the text field will behave as a normal text field.
@@ -105,6 +106,9 @@ class JsonTextField extends ExtendedTextField {
 
   /// TextStyle for the common text.
   final TextStyle? commonTextStyle;
+
+  /// If true, the error message will be shown, at bottom of the text field.
+  final bool showErrorMessage;
 
   /// Decoration for the error message container.
   final BoxDecoration? errorContainerDecoration;
@@ -235,7 +239,7 @@ class JsonTextFieldState extends State<JsonTextField> {
           strutStyle: widget.strutStyle,
           undoController: widget.undoController,
         ),
-        if (widget.isFormating)
+        if (widget.isFormating && widget.showErrorMessage)
           ErrorMessageContainer(
               jsonError: jsonError,
               errorTextStyle: errorTextStyle,

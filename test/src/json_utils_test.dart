@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:json_text_field_editor/src/json_utils.dart';
+import 'package:json_text_field/src/json_utils.dart';
 
 void main() {
   group('getJsonParsingError', () {

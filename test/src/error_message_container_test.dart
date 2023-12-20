@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:json_text_field_editor/src/error_message_container.dart';
+import 'package:json_text_field/src/error_message_container.dart';
 
 void main() {
   testWidgets('ErrorMessageContainer shows correct error message', (WidgetTester tester) async {

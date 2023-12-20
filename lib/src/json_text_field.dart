@@ -1,9 +1,9 @@
 import 'package:extended_text_field/extended_text_field.dart';
 import 'package:flutter/material.dart';
-import 'package:json_text_field_editor/json_text_field_editor.dart';
-import 'package:json_text_field_editor/src/error_message_container.dart';
-import 'package:json_text_field_editor/src/json_highlight/json_highlight.dart';
-import 'package:json_text_field_editor/src/json_utils.dart';
+import 'package:json_text_field/json_text_field_editor.dart';
+import 'package:json_text_field/src/error_message_container.dart';
+import 'package:json_text_field/src/json_highlight/json_highlight.dart';
+import 'package:json_text_field/src/json_utils.dart';
 
 class JsonTextField extends ExtendedTextField {
   const JsonTextField(

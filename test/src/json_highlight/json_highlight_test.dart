@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:json_text_field_editor/src/json_highlight/json_highlight.dart';
+import 'package:json_text_field/src/json_highlight/json_highlight.dart';
 
 void main() {
   group('JsonHighlight', () {

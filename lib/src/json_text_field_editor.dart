@@ -78,9 +78,9 @@ class JsonTextField extends ExtendedTextField {
       this.commonTextStyle,
       this.errorContainerDecoration,
       this.showErrorMessage = false,
-      required this.isFormating});
+      this.isFormating = true});
 
-  /// If true, the text will be formatted as json. If false, the text field will behave as a normal text field.
+  /// If true, the text will be formatted as json. If false, the text field will behave as a normal text field. Default is true.
   final bool isFormating;
 
   /// TextStyle for the json key.
@@ -107,7 +107,7 @@ class JsonTextField extends ExtendedTextField {
   /// TextStyle for the common text.
   final TextStyle? commonTextStyle;
 
-  /// If true, the error message will be shown, at bottom of the text field.
+  /// If true, the error message will be shown, at bottom of the text field. Default is false.
   final bool showErrorMessage;
 
   /// Decoration for the error message container.
@@ -122,39 +122,30 @@ class JsonTextField extends ExtendedTextField {
 }
 
 class JsonTextFieldState extends State<JsonTextField> {
-  late final JsonTextFieldController controller =
-      widget.controller ?? JsonTextFieldController();
-  late String? jsonError = controller.text.isEmpty
-      ? null
-      : JsonUtils.getJsonParsingError(controller.text);
+  late final JsonTextFieldController controller = widget.controller ?? JsonTextFieldController();
+  late String? jsonError = controller.text.isEmpty ? null : JsonUtils.getJsonParsingError(controller.text);
   late TextStyle style = widget.style ?? const TextStyle();
   late final TextStyle keyHighlightStyle = widget.keyHighlightStyle ??
       style.copyWith(
         fontWeight: FontWeight.bold,
         color: const Color.fromARGB(255, 68, 143, 255),
       );
-  late final TextStyle stringHighlightStyle =
-      widget.stringHighlightStyle ?? style.copyWith(color: Colors.green[900]);
-  late final TextStyle numberHighlightStyle =
-      widget.numberHighlightStyle ?? style.copyWith(color: Colors.purple[900]);
-  late final TextStyle boolHighlightStyle = widget.boolHighlightStyle ??
-      style.copyWith(color: Colors.purple[900], fontWeight: FontWeight.bold);
-  late final TextStyle nullHighlightStyle = widget.nullHighlightStyle ??
-      style.copyWith(color: Colors.grey[600], fontWeight: FontWeight.bold);
+  late final TextStyle stringHighlightStyle = widget.stringHighlightStyle ?? style.copyWith(color: Colors.green[900]);
+  late final TextStyle numberHighlightStyle = widget.numberHighlightStyle ?? style.copyWith(color: Colors.purple[900]);
+  late final TextStyle boolHighlightStyle =
+      widget.boolHighlightStyle ?? style.copyWith(color: Colors.purple[900], fontWeight: FontWeight.bold);
+  late final TextStyle nullHighlightStyle =
+      widget.nullHighlightStyle ?? style.copyWith(color: Colors.grey[600], fontWeight: FontWeight.bold);
   late final TextStyle specialCharHighlightStyle =
-      widget.specialCharHighlightStyle ??
-          style.copyWith(color: Colors.grey[700]);
-  late final TextStyle errorTextStyle =
-      widget.errorTextStyle ?? style.copyWith(color: Colors.red);
-  late final TextStyle commonTextStyle =
-      widget.commonTextStyle ?? style.copyWith(color: Colors.black);
+      widget.specialCharHighlightStyle ?? style.copyWith(color: Colors.grey[700]);
+  late final TextStyle errorTextStyle = widget.errorTextStyle ?? style.copyWith(color: Colors.red);
+  late final TextStyle commonTextStyle = widget.commonTextStyle ?? style.copyWith(color: Colors.black);
 
   @override
   void initState() {
-    controller.text =
-        (widget.isFormating && JsonUtils.isValidJson(controller.text))
-            ? JsonUtils.getPrettyPrintJson(controller.text)
-            : controller.text;
+    controller.text = (widget.isFormating && JsonUtils.isValidJson(controller.text))
+        ? JsonUtils.getPrettyPrintJson(controller.text)
+        : controller.text;
 
     super.initState();
   }

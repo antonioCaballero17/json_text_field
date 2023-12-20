@@ -10,6 +10,7 @@ class JsonHighlight extends SpecialTextSpanBuilder {
   final TextStyle? nullHighlightStyle;
   final TextStyle? specialCharHighlightStyle;
   final TextStyle? commonTextStyle;
+  final bool isFormating;
 
   JsonHighlight(
       {this.keyHighlightStyle,
@@ -18,7 +19,8 @@ class JsonHighlight extends SpecialTextSpanBuilder {
       this.boolHighlightStyle,
       this.nullHighlightStyle,
       this.specialCharHighlightStyle,
-      this.commonTextStyle});
+      this.commonTextStyle,
+      required this.isFormating});
 
   @override
   TextSpan build(String data, {TextStyle? textStyle, SpecialTextGestureTapCallback? onTap}) {
@@ -37,7 +39,12 @@ class JsonHighlight extends SpecialTextSpanBuilder {
       RegExp(r'\".*?\"\s*:|\".*?\"|\s*\b(\d+(\.\d+)?)\b|\b(true|false|null)\b|[{}\[\],]'),
       onMatch: (m) {
         String word = m.group(0)!;
-        spans.add(strategies.firstWhere((element) => element.match(word)).textSpan(word));
+        if (isFormating) {
+          spans.add(strategies.firstWhere((element) => element.match(word)).textSpan(word));
+
+          return '';
+        }
+        spans.add(TextSpan(text: word, style: commonTextStyle));
         return '';
       },
       onNonMatch: (n) {

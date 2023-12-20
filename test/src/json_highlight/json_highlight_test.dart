@@ -6,7 +6,7 @@ void main() {
   group('JsonHighlight', () {
     test('build method should create TextSpan with correct number of children', () {
       // Arrange
-      var jsonHighlight = JsonHighlight();
+      var jsonHighlight = JsonHighlight(isFormating: true);
       var data = '{"key": "value", "number": 123, "bool": true, "null": null}';
 
       // Act

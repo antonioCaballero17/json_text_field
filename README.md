@@ -57,7 +57,7 @@ JsonTextField(
   - `errorContainerDecoration`: Decoration for JSON errors container.
 
 - **Formatting and Sorting**: Enable or disable automatic formatting and sorting of the JSON string.
-    - `isFormating`: Toggle JSON string formatting.
+    - `isFormatting`: Toggle JSON string formatting.
     - `showErrorMessage`: Show or hide error messages.
 
     ### Controller Usage
@@ -71,7 +71,7 @@ Column(
     children: [
         JsonTextField(
             controller: controller,
-            isFormating: true,
+            isFormatting: true,
             showErrorMessage: false,
         ),
         ElevatedButton(

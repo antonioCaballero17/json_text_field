@@ -17,7 +17,7 @@ void main() {
             height: 300,
             width: 300,
             child: JsonTextField(
-              isFormating: true,
+              isFormatting: true,
               controller: controller,
             )),
       ),
@@ -43,7 +43,7 @@ void main() {
             height: 300,
             width: 300,
             child: JsonTextField(
-              isFormating: true,
+              isFormatting: true,
               controller: controller,
             )),
       ),
@@ -66,7 +66,7 @@ void main() {
 
     await tester.pumpWidget(MaterialApp(
       home: Scaffold(
-        body: JsonTextField(isFormating: true, controller: controller),
+        body: JsonTextField(isFormatting: true, controller: controller),
       ),
     ));
 
@@ -86,7 +86,7 @@ void main() {
     controller.formatJson(sortJson: true);
     await tester.pumpWidget(MaterialApp(
       home: Scaffold(
-        body: JsonTextField(isFormating: true, controller: controller),
+        body: JsonTextField(isFormatting: true, controller: controller),
       ),
     ));
 

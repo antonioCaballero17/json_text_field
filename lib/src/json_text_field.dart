@@ -78,10 +78,10 @@ class JsonTextField extends ExtendedTextField {
       this.commonTextStyle,
       this.errorContainerDecoration,
       this.showErrorMessage = false,
-      this.isFormating = true});
+      this.isFormatting = true});
 
   /// If true, the text will be formatted as json. If false, the text field will behave as a normal text field. Default is true.
-  final bool isFormating;
+  final bool isFormatting;
 
   /// TextStyle for the json key.
   final TextStyle? keyHighlightStyle;
@@ -143,7 +143,7 @@ class JsonTextFieldState extends State<JsonTextField> {
 
   @override
   void initState() {
-    controller.text = (widget.isFormating && JsonUtils.isValidJson(controller.text))
+    controller.text = (widget.isFormatting && JsonUtils.isValidJson(controller.text))
         ? JsonUtils.getPrettyPrintJson(controller.text)
         : controller.text;
 
@@ -183,7 +183,7 @@ class JsonTextFieldState extends State<JsonTextField> {
           onAppPrivateCommand: widget.onAppPrivateCommand,
           onChanged: (value) {
             widget.onChanged?.call(value);
-            if (widget.isFormating) {
+            if (widget.isFormatting) {
               JsonUtils.validateJson(json: value, onError: _setJsonError);
             }
           },
@@ -205,7 +205,7 @@ class JsonTextFieldState extends State<JsonTextField> {
             specialCharHighlightStyle: stringHighlightStyle,
             stringHighlightStyle: stringHighlightStyle,
             commonTextStyle: commonTextStyle,
-            isFormating: widget.isFormating,
+            isFormating: widget.isFormatting,
           ),
           style: widget.style,
           textAlign: widget.textAlign,
@@ -230,7 +230,7 @@ class JsonTextFieldState extends State<JsonTextField> {
           strutStyle: widget.strutStyle,
           undoController: widget.undoController,
         ),
-        if (widget.isFormating && widget.showErrorMessage)
+        if (widget.isFormatting && widget.showErrorMessage)
           ErrorMessageContainer(
               jsonError: jsonError,
               errorTextStyle: errorTextStyle,

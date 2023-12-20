@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:json_text_field_editor/json_text_field_editor.dart';
-import 'package:json_text_field_editor/src/bindings.dart';
 
 void main() {
   testWidgets('JsonTextField Widget Test. Formatting a valid json', (WidgetTester tester) async {
@@ -64,15 +62,8 @@ void main() {
           offset: 0,
         ));
 
-    // Build our app and trigger a frame.
-    final bindings = Bindings.getbindings(
-      controller: controller,
-      onFormatJson: (_) {},
-      isFormateable: true,
-    );
-    const enterActivator = SingleActivator(LogicalKeyboardKey.enter, control: true, alt: true);
+    controller.formatJson(sortJson: false);
 
-    bindings[enterActivator]!();
     await tester.pumpWidget(MaterialApp(
       home: Scaffold(
         body: JsonTextField(isFormating: true, controller: controller),
@@ -92,14 +83,7 @@ void main() {
         ));
 
     // Build our app and trigger a frame.
-    final bindings = Bindings.getbindings(
-      controller: controller,
-      onFormatJson: (_) {},
-      isFormateable: true,
-    );
-    const enterActivator = SingleActivator(LogicalKeyboardKey.enter, control: true, alt: true);
-
-    bindings[enterActivator]!();
+    controller.formatJson(sortJson: true);
     await tester.pumpWidget(MaterialApp(
       home: Scaffold(
         body: JsonTextField(isFormating: true, controller: controller),

@@ -2,6 +2,13 @@
 
 Enhance your Flutter apps with `JSONTextField`, a comprehensive package designed for editing JSON files directly within a TextField. This tool integrates seamlessly with Flutter, providing a rich and customizable experience for JSON manipulation.
 
+<center>
+<img src="readme_images/readme1.gif" width="300">
+<img src="readme_images/readme2.png" width="300">
+<img src="readme_images/readme3.png" width="300">
+</center>
+
+
 ## Key Features
 
 - **Dynamic JSON Value Highlighting**: Effortlessly distinguish between different JSON elements like keys, strings, numbers, booleans, nulls, and special characters through customizable text styles.

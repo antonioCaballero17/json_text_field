@@ -1,4 +1,4 @@
-library json_text_field_editor;
+library json_text_field;
 
-export 'src/json_text_field_editor.dart';
+export 'src/json_text_fiel.dart';
 export 'src/json_text_field_controller.dart';

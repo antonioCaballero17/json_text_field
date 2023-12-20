@@ -1,5 +1,5 @@
 name: json_text_field
-description: "A new Flutter package project."
+description: "Flutter widget that automatically formats text in a JSON format."
 version: 1.0.0
 homepage: https://github.com/antonioCaballero17/json_text_field
 

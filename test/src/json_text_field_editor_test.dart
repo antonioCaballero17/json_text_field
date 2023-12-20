@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:json_text_field/json_text_field_editor.dart';
+import 'package:json_text_field/json_text_field.dart';
 
 void main() {
   testWidgets('JsonTextField Widget Test. Formatting a valid json', (WidgetTester tester) async {

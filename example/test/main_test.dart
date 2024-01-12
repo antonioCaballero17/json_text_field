@@ -7,6 +7,8 @@ void main() {
     // Build our app and trigger a frame.
     await tester.pumpWidget(const MyApp());
 
+    var jsonTextField = find.byType(JsonTextField).first;
+    await tester.enterText(jsonTextField, '{"name": "John"}');
     expect(find.byType(JsonTextField), findsOneWidget);
   });
 }

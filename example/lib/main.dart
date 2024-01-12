@@ -37,6 +37,7 @@ class _MyAppState extends State<MyApp> {
                   width: 300,
                   height: 300,
                   child: JsonTextField(
+                    onError: (error) => debugPrint(error),
                     showErrorMessage: true,
                     controller: controller,
                     isFormatting: isFormating,

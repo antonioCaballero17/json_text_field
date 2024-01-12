@@ -6,6 +6,9 @@ import 'package:json_text_field/src/json_highlight/json_highlight.dart';
 import 'package:json_text_field/src/json_utils.dart';
 
 class JsonTextField extends ExtendedTextField {
+  @override
+  Type get runtimeType => EditableText;
+
   const JsonTextField(
       {super.key,
       super.autocorrect,
@@ -78,7 +81,8 @@ class JsonTextField extends ExtendedTextField {
       this.commonTextStyle,
       this.errorContainerDecoration,
       this.showErrorMessage = false,
-      this.isFormatting = true});
+      this.isFormatting = true,
+      this.onError});
 
   /// If true, the text will be formatted as json. If false, the text field will behave as a normal text field. Default is true.
   final bool isFormatting;
@@ -112,6 +116,9 @@ class JsonTextField extends ExtendedTextField {
 
   /// Decoration for the error message container.
   final BoxDecoration? errorContainerDecoration;
+
+  /// Callback for the error message.
+  final Function(String?)? onError;
   @override
   final JsonTextFieldController? controller;
 
@@ -184,7 +191,12 @@ class JsonTextFieldState extends State<JsonTextField> {
           onChanged: (value) {
             widget.onChanged?.call(value);
             if (widget.isFormatting) {
-              JsonUtils.validateJson(json: value, onError: _setJsonError);
+              JsonUtils.validateJson(
+                  json: value,
+                  onError: (error) {
+                    _setJsonError(error);
+                    widget.onError?.call(error);
+                  });
             }
           },
           onEditingComplete: widget.onEditingComplete,

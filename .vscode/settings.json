@@ -1,8 +1,8 @@
 {
     "editor.codeActionsOnSave": {
-        "source.organizeImports": true,
-        "source.sortImports": true,
-        "source.fixAll": true,
+        "source.organizeImports": "explicit",
+        "source.sortImports": "explicit",
+        "source.fixAll": "explicit"
     },
     "[dart]": {
         "editor.formatOnSave": true,
@@ -14,7 +14,7 @@
         "editor.suggest.snippetsPreventQuickSuggestions": false,
         "editor.suggestSelection": "first",
         "editor.tabCompletion": "onlySnippets",
-        "editor.wordBasedSuggestions": false,
+        "editor.wordBasedSuggestions": "off",
         "editor.suggest.showConstants": true
     },
     "dart.lineLength": 120,
